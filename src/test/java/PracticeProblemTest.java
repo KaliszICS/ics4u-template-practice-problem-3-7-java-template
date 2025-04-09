@@ -1,49 +1,93 @@
 import static org.junit.jupiter.api.Assertions.*;
 import org.junit.jupiter.api.*;
-import java.io.*;
+import java.lang.reflect.Method;
 
-public class PracticeProblemTest {
+@Test
+@DisplayName("")
+void SearchMazeMovesTest3() {
+  Class<?> testClass = PracticeProblem.class;
+  try {
+    Class[] cArg = {String[][].class};
+    Method method = testClass.getDeclaredMethod("searchMazeMoves", cArg);
+    String[][] maze = {
+      {"", "", "", "", ""},
+      {"", "*", "", "", ""},
+      {"", "*", "", "*", ""},
+      {"S", "*", "", "", "F"},
+    };
+    assertEquals(10, (int)method.invoke(null, maze));
+  }
+  catch (NoSuchMethodException e) {
+    fail("Method does not exist");
+  }
+  catch (Exception e) {
+    fail("Something weird happened");
+  }
+}
 
-   @Test
-   public void testOutput()
-   {
-     PrintStream originalOut = System.out;
-     ByteArrayOutputStream bos = new ByteArrayOutputStream();
-     System.setOut(new PrintStream(bos));
+@Test
+@DisplayName("")
+void SearchMazeMovesTest2() {
+  Class<?> testClass = PracticeProblem.class;
+  try {
+    Class[] cArg = {String[][].class};
+    Method method = testClass.getDeclaredMethod("searchMazeMoves", cArg);
+    String[][] maze = {
+      {"", "", "", "", ""},
+      {"", "", "", "", ""},
+      {"", "", "*", "", ""},
+      {"S", "*", "F", "", ""},
+    };
+    assertEquals(8, (int)method.invoke(null, maze));
+  }
+  catch (NoSuchMethodException e) {
+    fail("Method does not exist");
+  }
+  catch (Exception e) {
+    fail("Something weird happened");
+  }
+}
 
-     // action
-     PracticeProblem.q1();
+@Test
+@DisplayName("")
+void SearchMazeMovesTest1() {
+  Class<?> testClass = PracticeProblem.class;
+  try {
+    Class[] cArg = {String[][].class};
+    Method method = testClass.getDeclaredMethod("searchMazeMoves", cArg);
+    String[][] maze = {
+      {"", "", "", ""},
+      {"", "", "", ""},
+      {"", "", "", ""},
+      {"S", "*", "F", "*"},
+    };
+    assertEquals(8, (int)method.invoke(null, maze));
+  }
+  catch (NoSuchMethodException e) {
+    fail("Method does not exist");
+  }
+  catch (Exception e) {
+    fail("Something weird happened");
+  }
+}
 
-     // assertion
-     assertEquals("There once was a man from St. Ives.\n", bos.toString());
-
-     // undo the binding in System
-     System.setOut(originalOut);
-   }
-
-   @Test
-   public void testInputandOutput()
-   {
-      String data = "Users Input";
-      System.setIn(new ByteArrayInputStream(data.getBytes()));
-      
-      PrintStream originalOut = System.out;
-      ByteArrayOutputStream bos = new ByteArrayOutputStream();
-      System.setOut(new PrintStream(bos));
-
-      // action
-      PracticeProblem.q1();
-
-      // assertion
-      assertEquals("There once was a man from St. Ives.\n", bos.toString());
-
-      // undo the binding in System
-      System.setOut(originalOut);
-   }
-
-   @Test
-   public void testQ3()
-   {
-     
-   }
+@Test
+@DisplayName("")
+void SearchMazeMovesTest4() {
+  Class<?> testClass = PracticeProblem.class;
+  try {
+    Class[] cArg = {String[][].class};
+    Method method = testClass.getDeclaredMethod("searchMazeMoves", cArg);
+    String[][] maze = {
+      {"", "*", ""},
+      {"S", "*", "F"},
+    };
+    assertEquals(-1, (int)method.invoke(null, maze));
+  }
+  catch (NoSuchMethodException e) {
+    fail("Method does not exist");
+  }
+  catch (Exception e) {
+    fail("Something weird happened");
+  }
 }
